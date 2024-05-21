@@ -1,5 +1,5 @@
 # 확장자 제외 
-**/*.exe
-**/*.out
-**/*.o
+*.exe
+*.out
+*.o
 node_modules/
