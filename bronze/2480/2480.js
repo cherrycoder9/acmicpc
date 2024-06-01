@@ -1,23 +1,25 @@
-const readline = require('readline');
+const input = fs.readFileSync('/dev/stdin').trim();
+const [a, b, c] = input.split(' ').map(Number);
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-let input = [];
-
-rl.on('line', (line) => {
-    input.push(line);
-});
-
-rl.on('close', () => {
-    const N = parseInt(input[0], 10);
-    let sum = 0;
-    for (let i = 1; i <= N; i++) {
-        sum += parseInt(input[i], 10);
+if (a == b && b == c) {
+    console.log(10000 + a * 1000);
+} else if (a != b && b != c) {
+    console.log(compareSize([a, b, c]) * 100);
+} else {
+    if (a == b) {
+        console.log(1000 + a * 1000);
+    } else if (b == c) {
+        console.log(1000 + b * 1000);
+    } else if (a == c) {
+        console.log(1000 + c * 1000);
     }
-    console.log(sum);
-});
+}
 
-// * 푸는중 
+
+function compareSize(numArray) {
+    let largestNum = numArray[0];
+    largestNum = largestNum < numArray[1] ? numArray[1] : largestNum;
+    largestNum = largestNum < numArray[2] ? numArray[2] : largestNum;
+
+    return largestNum;
+}
