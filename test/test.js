@@ -1,7 +1,6 @@
-const countMap = new Map();
-
-// countMap.set('hi', 3);
-// countMap.set('my', 9);
-console.log(countMap);
-console.log(countMap.length);
-console.log(countMap.size);
+// 데이터 저장
+localStorage.setItem('username', 'JohnDoe');
+localStorage.setItem('age', '30', 'hi');
+// 저장된 항목 수 확인
+const length = localStorage.length;
+console.log(length); // 저장된 항목 수 출력
