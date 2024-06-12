@@ -1,34 +1,27 @@
-// const map = new Map();
-// map.set('a', 1);
-// map.set('b', 2);
-// map.set('c', 3);
-// console.log(map);
+const input = "mississipidi".toUpperCase();
+const count = {};
 
-// const iterator = map.keys();
-// console.log(iterator);
+for (const char of input) {
+    if (count[char]) {
+        count[char]++;
+    } else {
+        count[char] = 1;
+    }
+}
 
-// for (const key of iterator) {
-//     console.log(key); // 'a', 'b', 'c'
-// }
+let maxCount = 0;
+let maxChar = '?';
+let duplicate = false;
 
-// const array = [1, 2, 3];
-// const arrayIterator = array.keys();
-// console.log(arrayIterator); // Array Iterator { 0, 1, 2 }
+for (const char in count) {
+    if (count[char] > maxCount) {
+        maxCount = count[char];
+        maxChar = char;
+        duplicate = false;
+    } else if (count[char] == maxCount) {
+        duplicate = true;
+    }
+}
 
-// const mis = "mississipi".toUpperCase();
-// const a = [...mis];
-// console.log(a);
-// console.log(a.length);
-
-// for (let i = 0; i < a.length; i++) {
-//     console.log(a[i]);
-// }
-
-let numbers = [10, 20, 30, 40, 50];
-
-let filteredNumbers = numbers.filter((number, index, array) => {
-    console.log(`number: ${number}, index: ${index}, array: ${array}`);
-    return number > 20;
-});
-
-console.log(filteredNumbers); // [30, 40, 50]
+console.log(duplicate ? '?' : maxChar);
+console.log(count);
